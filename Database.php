@@ -6,7 +6,7 @@ class Database
     public $connect;
     private $host = "localhost";
     private $username = 'root';
-    private $password = '';
+    private $password = 'root';
     private $database = 'task2';
     function __construct()
     {
