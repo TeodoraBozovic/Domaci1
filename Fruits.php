@@ -24,7 +24,6 @@ class Fruits extends Database
         } else {
             echo "Failed to delete fruit";
         }
-
     }
 
     public function add_fruit($fruit, $description, $user_id)
@@ -35,7 +34,7 @@ class Fruits extends Database
 
 
         if ($result) {
-            echo "<script>('You have successfully add new fruit')</script>";
+            echo "<script>('You have successfully added new fruit')</script>";
 
             header("Location:index.php");
         } else {
@@ -48,9 +47,9 @@ class Fruits extends Database
         $sql = "SELECT * FROM fruits WHERE user_id='$user_id'";
         $result = $this->execute_query($sql);
         $fruits = "";
-        while($row = mysqli_fetch_array($result))
+        while ($row = mysqli_fetch_array($result))
 
-        $fruits .="
+            $fruits .= "
             <tr>
                 <td>" . $row['fruit'] . "</td>
                 <td>" . $row['description'] . "</td>

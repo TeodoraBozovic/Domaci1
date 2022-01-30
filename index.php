@@ -57,26 +57,24 @@ $object = new User();
 
         load_data();
 
-        function load_data() {
-            var action = "Load";
-
-            $.ajax({
-                url: "action.php",
-                method: "POST",
-                data: {
-                    action: action
-                },
-                success: function(data) {
-                    $('#user_table').html(data);
-                }
-            });
-        }
     });
 
+    function load_data() {
+        var action = "Load";
+
+        $.ajax({
+            url: "action.php",
+            method: "POST",
+            data: {
+                action: action
+            },
+            success: function(data) {
+                $('#user_table').html(data);
+            }
+        });
+    }
 
     $(document).on("click", ".delete", function(e) {
-        e.preventDefault();
-        e.stopPropagation();
         var user_id = $(this).attr("id");
         let val = confirm("Are you sure you want to delete this?");
         if (val === true) {
@@ -86,16 +84,10 @@ $object = new User();
                 data: {
                     user_id: user_id
                 },
+                success: load_data
             })
-            window.location.reload();
+            // window.location.reload();
 
         }
-    })
-
-    $(document).on("click", ".update", function() {
-        var user_id = $(this).attr("id");
-        console.log(user_id);
-        window.location.replace('update_user.php?user_id=' + user_id);
-
     })
 </script>

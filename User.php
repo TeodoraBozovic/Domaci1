@@ -40,7 +40,6 @@ class User extends Database
         } else {
             echo "Failed to edit new user";
         }
-
     }
 
     public function update_user($first_name, $last_name, $job, $id)
@@ -50,7 +49,7 @@ class User extends Database
         if ($result) {
             header("Location:index.php");
         } else {
-            echo "Failed to edit new user";
+            echo "Failed to edit user";
         }
     }
 
@@ -66,6 +65,7 @@ class User extends Database
                 <input type="text" name="value_to_search"   placeholder="Search" >
                 <input type="submit" name="search" >
             </div>
+        </form>
             <br>
            <table id="user_table" class="user_table table-bordered table-striped">  
                 <tr>  
@@ -86,18 +86,17 @@ class User extends Database
                      <td>' . $row->first_name . '</td>  
                      <td>' . $row->last_name . '</td>  
                      <td>' . $row->job . '</td>  
-                     <td><a href="update_user.php?user_id=' . $row->id   .'"><button type="button" name="update"  class="btn btn-success btn-xs update">Update</button></a></td>  
-                     <td><a href="delete_user.php?user_id=' . $row->id   .'" <button type="button" name="delete" class="btn btn-danger btn-xs delete">Delete</button></td>  
-                     <td><a href="add_fruit.php?user_id=' . $row->id   .'" <button type="button" class="btn btn-success btn-xs">Add fruit</button></td>  
+                     <td><a href="update_user.php?user_id=' . $row->id   . '"><button type="button" name="update"  class="btn btn-success btn-xs update">Update</button></a></td>  
+                     <td>
+                     <button type="button" id=' . $row->id . ' name="delete" class="btn btn-danger btn-xs delete">Delete</button>
+                     </td>  
+                     <td><a href="add_fruit.php?user_id=' . $row->id   . '" <button type="button" class="btn btn-success btn-xs">Add fruit</button></td>  
                 </tr>  
                 ';
         }
 
 
-        $output .= '</table> </form>';
+        $output .= '</table> ';
         return $output;
     }
-
 }
-
-?>
